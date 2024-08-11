@@ -28,7 +28,7 @@ services:
     working_dir: /var/www
     volumes:
       - ./:/var/www
-    command: bash -c "if [ ! -d 'node_modules' ]; then npm install && npm run dev; fi"
+    command: bash -c "if [ ! -d 'node_modules' ]; then npm install; fi && npm run dev"
     depends_on:
       - app
     container_name: node_app
