@@ -11,9 +11,11 @@ class UpdateController extends Controller
 {
     public function __invoke(UpdateRequest $request, $id)
     {
+        $data = $request->validated();
+
         $post = Post::findOrFail($id);
 
-        $post->update($request->validated());
+        $post->update($data);
 
         return new PostResource($post);
     }

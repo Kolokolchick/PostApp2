@@ -11,9 +11,9 @@ class StoreController extends Controller
 {
     public function __invoke(StoreRequest $request)
     {
-        $validated = $request->validated();
+        $data = $request->validated();
 
-        $post = Post::create($validated);
+        $post = Post::create($data);
         
         return new PostResource($post);
     }
