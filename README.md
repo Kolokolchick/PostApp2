@@ -154,7 +154,7 @@ curl -X POST http://localhost:8000/api/reset-password \
 ### 2. Session Management
 
 #### User logout
-**POST /logout (требует аутентификации)**
+**POST /logout (requires authentication)**
 ```sh
 curl -X POST http://localhost:8000/api/logout \
 -H "Authorization: Bearer your-token"
@@ -163,7 +163,7 @@ curl -X POST http://localhost:8000/api/logout \
 ### 3. User Management
 
 #### Create a user
-**POST /users (требует аутентификации)**
+**POST /users (requires authentication)**
 ```sh
 curl -X POST http://localhost:8000/api/users \
 -H "Authorization: Bearer your-token" \
@@ -176,7 +176,7 @@ curl -X POST http://localhost:8000/api/users \
 ```
 
 #### Update user information
-**PATCH /users/{id} (требует аутентификации)**
+**PATCH /users/{id} (requires authentication)**
 ```sh
 curl -X PATCH http://localhost:8000/api/users/{id} \
 -H "Authorization: Bearer your-token" \
@@ -189,7 +189,7 @@ curl -X PATCH http://localhost:8000/api/users/{id} \
 ```
 
 #### Delete a user
-**DELETE /users/{id} (требует аутентификации)**
+**DELETE /users/{id} (requires authentication)**
 ```sh
 curl -X DELETE http://localhost:8000/api/users/{id} \
 -H "Authorization: Bearer your-token"
@@ -198,7 +198,7 @@ curl -X DELETE http://localhost:8000/api/users/{id} \
 ### 4. Post Management
 
 #### Create a new post
-**POST /posts (требует аутентификации)**
+**POST /posts (requires authentication)**
 ```sh
 curl -X POST http://localhost:8000/api/posts \
 -H "Authorization: Bearer your-token" \
@@ -211,7 +211,7 @@ curl -X POST http://localhost:8000/api/posts \
 ```
 
 #### Update a post
-**PATCH /posts/{id} (требует аутентификации)**
+**PATCH /posts/{id} (requires authentication)**
 ```sh
 curl -X PATCH http://localhost:8000/api/posts/{id} \
 -H "Authorization: Bearer your-token" \
@@ -224,8 +224,34 @@ curl -X PATCH http://localhost:8000/api/posts/{id} \
 ```
 
 #### Delete a post
-**DELETE /posts/{id} (требует аутентификации)**
+**DELETE /posts/{id} (requires authentication)**
 ```sh
 curl -X DELETE http://localhost:8000/api/posts/{id} \
 -H "Authorization: Bearer your-token"
+```
+
+### 5. Viewing Users and Posts (Public Routes)
+
+#### Get a list of users
+**GET /users**
+```sh
+curl -X GET http://your-app-url/api/users
+```
+
+#### Get user information
+**GET /users/{id}**
+```sh
+curl -X GET http://your-app-url/api/users/{id}
+```
+
+#### Get a list of posts
+**GET /posts**
+```sh
+curl -X GET http://your-app-url/api/posts
+```
+
+#### Get post information
+**GET /posts/{id}**
+```sh
+curl -X GET http://your-app-url/api/posts/{id}
 ```
