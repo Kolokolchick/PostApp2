@@ -23,16 +23,6 @@ services:
     command: bash -c "if [ ! -f '.env' ]; then cp .env.example .env; fi && if [ ! -d 'vendor' ]; then composer install && php artisan key:generate; fi && php-fpm"
     container_name: app
 
-  node:
-    image: node:20.11.1
-    working_dir: /var/www
-    volumes:
-      - ./:/var/www
-    command: bash -c "if [ ! -d 'node_modules' ]; then npm install; fi && npm run dev"
-    depends_on:
-      - app
-    container_name: node_app
-
   db:
     image: mysql:8.0
     restart: always

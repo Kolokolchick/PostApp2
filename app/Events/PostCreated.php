@@ -15,9 +15,7 @@ class PostCreated
     public $post;
 
     public function __construct(Post $post)
-    {
-        Log::notice('PostCreated is worked');
-        
+    {        
         $this->post = $post;
     }
 }
