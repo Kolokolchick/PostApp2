@@ -235,23 +235,23 @@ curl -X DELETE http://localhost:8000/api/posts/{id} \
 #### Get a list of users
 **GET /users**
 ```sh
-curl -X GET http://your-app-url/api/users
+curl -X GET http://localhost:8000/api/users
 ```
 
 #### Get user information
 **GET /users/{id}**
 ```sh
-curl -X GET http://your-app-url/api/users/{id}
+curl -X GET http://localhost:8000/api/users/{id}
 ```
 
 #### Get a list of posts
 **GET /posts**
 ```sh
-curl -X GET http://your-app-url/api/posts
+curl -X GET http://localhost:8000/api/posts
 ```
 
 #### Get post information
 **GET /posts/{id}**
 ```sh
-curl -X GET http://your-app-url/api/posts/{id}
+curl -X GET http://localhost:8000/api/posts/{id}
 ```
