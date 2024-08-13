@@ -64,3 +64,168 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+# App discription
+
+This is a project created based on a test assignment.
+
+## Requirements
+
+- Docker
+
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Kolokolchick/PostApp1.git
+   ```
+
+## Setup
+
+1. Run the Docker containers:
+   ```bash
+   docker-compose up -d
+   ```
+
+2. Wait for the containers to fully start (-_-)
+
+3. Run migrations with seed data:
+   ```bash
+   docker-compose exec app php artisan migrate --seed
+   ```
+
+## Testing
+
+To test the API, you can use [Postman](https://www.postman.com/), [cURL](https://curl.se/), or any other tool for sending HTTP requests.
+
+By default, sent emails are logged in `laravel.log`.
+
+Examples of requests for testing are provided below:
+
+### 1. Authentication
+
+#### Register a new user
+**POST /register**
+```sh
+curl -X POST http://localhost:8000/api/register \
+-H "Content-Type: application/json" \
+-d '{
+  "name": "John Doe",
+  "email": "johndoe@example.com",
+  "password": "your-password",
+  "password_confirmation": "your-password"
+}'
+```
+
+#### User login
+**POST  /login**
+```sh
+curl -X POST http://localhost:8000/api/login \
+-H "Content-Type: application/json" \
+-d '{
+  "email": "johndoe@example.com",
+  "password": "your-password"
+}'
+```
+
+#### Request a password reset
+**POST  /forgot-password**
+```sh
+curl -X POST http://localhost:8000/api/forgot-password \
+-H "Content-Type: application/json" \
+-d '{
+  "email": "johndoe@example.com"
+}'
+```
+
+#### Reset password
+**POST  /reset-password**
+```sh
+curl -X POST http://localhost:8000/api/reset-password \
+-H "Content-Type: application/json" \
+-d '{
+    "email": "johndoe@example.com",
+    "password": "your-password",
+    "password_confirmation": "your-password",
+    "token": "token"
+}'
+```
+
+### 2. Session Management
+
+#### User logout
+**POST /logout (требует аутентификации)**
+```sh
+curl -X POST http://localhost:8000/api/logout \
+-H "Authorization: Bearer your-token"
+```
+
+### 3. User Management
+
+#### Create a user
+**POST /users (требует аутентификации)**
+```sh
+curl -X POST http://localhost:8000/api/users \
+-H "Authorization: Bearer your-token" \
+-H "Content-Type: application/json" \
+-d '{
+  "name": "New User",
+  "email": "newuser@example.com",
+  "password": "new-password"
+}'
+```
+
+#### Update user information
+**PATCH /users/{id} (требует аутентификации)**
+```sh
+curl -X PATCH http://localhost:8000/api/users/{id} \
+-H "Authorization: Bearer your-token" \
+-H "Content-Type: application/json" \
+-d '{
+  "name": "Updated Name",
+  "email": "updatedemail@example.com",
+  "password": "new-password"
+}'
+```
+
+#### Delete a user
+**DELETE /users/{id} (требует аутентификации)**
+```sh
+curl -X DELETE http://localhost:8000/api/users/{id} \
+-H "Authorization: Bearer your-token"
+```
+
+### 4. Post Management
+
+#### Create a new post
+**POST /posts (требует аутентификации)**
+```sh
+curl -X POST http://localhost:8000/api/posts \
+-H "Authorization: Bearer your-token" \
+-H "Content-Type: application/json" \
+-d '{
+  "title": "New Post Title",
+  "body": "Content of the post",
+  "author_id" => "user id"
+}'
+```
+
+#### Update a post
+**PATCH /posts/{id} (требует аутентификации)**
+```sh
+curl -X PATCH http://localhost:8000/api/posts/{id} \
+-H "Authorization: Bearer your-token" \
+-H "Content-Type: application/json" \
+-d '{
+  "title": "New Post Title",
+  "body": "Content of the post",
+  "author_id" => "user id"
+}'
+```
+
+#### Delete a post
+**DELETE /posts/{id} (требует аутентификации)**
+```sh
+curl -X DELETE http://localhost:8000/api/posts/{id} \
+-H "Authorization: Bearer your-token"
+```
