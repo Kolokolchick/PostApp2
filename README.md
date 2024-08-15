@@ -77,7 +77,7 @@ This is a project created based on a test assignment.
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Kolokolchick/PostApp1.git
+   git clone https://github.com/Vinex56/PostApp1.git
    ```
 
 ## Setup
